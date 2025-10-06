@@ -1,0 +1,17 @@
+<% if (error) { %>
+    <p style="background-color: rgb(238, 21, 21); color: #fff;padding: 8px 12px;">
+        <%= error %>
+    </p>
+<% } %>
+
+<% if (message) { %>
+    <p style="background-color: rgb(5, 199, 5); color: #fff;padding: 8px 12px;">
+        <%= message %>
+    </p>
+<% } %>
+
+<form action="<%= routePost %>/delete-post/<%= data._id %>?_method=DELETE" method="post" id="deletePost">
+    <label for="delete post">
+        <button type="submit">Delete</button>
+    </label>
+</form>

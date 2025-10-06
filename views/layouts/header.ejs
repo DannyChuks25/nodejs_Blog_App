@@ -1,0 +1,46 @@
+<header>
+    <nav>
+        <div class="logo">
+            <a href="#"><span>ChuksBlog</span></a>
+        </div>
+
+        <% if (user) { %>
+            <div class="auth">
+                <form action="/logout" method="POST" style="display:inline;">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+        <% } else { %>
+            <div class="nav">
+                <ul>
+                    <li><a href="<%= route %>">Home</a></li>
+                    <li><a href="<%= route %>/about">About</a></li>
+                    <li><a href="<%= routePost %>/allPosts">Posts</a></li>
+                    <li><a href="<%= route %>/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="auth">
+                <ul>
+                    <li><a href="<%= route %>/register" class="register">Register</a></li>
+                    <li><a href="<%= route %>/login" class="login">Login</a></li>
+                </ul>
+            </div>
+        <% }  %>
+
+        
+        <!-- <div class="auth">
+            <% //if (user) { %>
+                <form action="/logout" method="POST" style="display:inline;">
+                    <button type="submit">Logout</button>
+                </form>
+            <% //} else { %>
+                <ul>
+                    <li><a href="<%= route %>/register" class="register">Register</a></li>
+                    <li><a href="<%= route %>/login" class="login">Login</a></li>
+                </ul>
+            <% //}  %>
+             
+            
+        </div> -->
+    </nav>
+</header>

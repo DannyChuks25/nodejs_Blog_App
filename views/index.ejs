@@ -1,0 +1,63 @@
+<div class="home">
+    <h1>The Blog Platform for developers</h1>
+    <p>Welcome to ChuksBlog. This is where developers meet and share ideas on different topics regarding the tech industry</p>
+    <div class="search">
+        <!-- <input type="search" placeholder="Search blog posts...">
+          -->
+        <form action="/api/blog/search" class="search__form" role="search" method="post">
+            <input 
+                type="search" aria-label="Search" 
+                id="searchInput"
+                name="searcTerm"
+                placeholder="Search blog posts..."
+            >
+        </form>
+    </div>
+    
+    <div class="card-ctn">
+        <% blogs.forEach(card => { %>
+            <div class="card">
+                <div class="img-ctn">
+                    <img src="<%= card.coverPhoto %>" alt="">
+                </div>
+                <div class="tech-stack">
+                    <h5><%= card.techStack %></h5>
+                </div>
+                <div class="blog-title">
+                    <a href="<%= routePost %>/viewPost/<%= card._id %>"><h3><%= card.title %></h3></a>
+                    <i></i>
+                </div>
+                <div class="blog-desc">
+                    <p><%= card.desc %></p>
+                </div>
+                <div class="more">
+                    <div class="profile-img">
+                        <img src="<%= card.profileImg %>" alt="">
+                    </div>
+                    <div class="name-Date">
+                        <div class="name"><h5><%= card.authorName %></h5></div>
+                        <div>
+                            <div class="date">
+                                <span>
+                                <!-- <%= card.createdAt.toDateString() %> -->
+                                <%= card.createdAt ? card.createdAt.toDateString() : card.date %>
+                            </span></div>
+                            <!-- <% //if (User.role=="author") { %>
+                            <div class="upd_del">
+                                <button>Update</button>
+                                <button>Delete</button>
+                            </div>
+                            <% //} %> -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+       
+       <% if (nextPage !== null) { %>
+            <a href="<%= adminRoutes %>/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+        <% } %>
+    </div>
+</div>
+</div>

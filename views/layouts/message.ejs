@@ -1,0 +1,18 @@
+<div class="message-box 
+    <%= heading === "Success" ? "success" : "" %>
+    <%= heading === "Error" ? "error" : "" %>
+">
+    <h2><%= heading || "Notification" %></h2>
+    <br>
+    <p><%= message %></p>
+
+    <% if (redirectUrl) { %>
+        <br>
+      <a href="<%= redirectUrl %>">Go back</a>
+    <% } %>
+
+    <% if (loginUrl) { %>
+        <br>
+        <a href="<%= loginUrl %>">Login</a>
+    <% } %>
+  </div>

@@ -1,0 +1,30 @@
+<form action="<%= adminRoutes %>/update-post/<%= data._id %>?_method=PUT" method="post" id="updatePost" enctype="multipart/form-data">
+    <h1>Update Post</h1>
+    <label for="coverPhoto">
+        <span>Cover Photo</span>
+        <input type="file" name="coverPhoto">
+    </label>
+    <label for="tech-Stack">
+        <input type="text" name="techStack" placeholder="Tech Stack" value="<%= data.techStack %>">
+    </label>
+    <label for="title">
+        <input type="text" name="title" placeholder="Title" value="<%= data.title %>">
+    </label>
+    <label for="description">
+        <textarea name="desc" placeholder="Description" cols="30" rows="10"><%= data.desc %></textarea>
+    </label>
+    <!-- <label for="profile-image">
+        <span>Profile Image</span>
+        <input type="file" name="profileImg">
+    </label> -->
+    <label for="author-name">
+        <input type="text" name="authorName" placeholder="Author Name" value="<%= data.authorName %>">
+    </label>
+    <label for="update post">
+        <button type="submit">Update</button>
+    </label>
+</form>
+
+<!-- <% //if (message) { %>
+    <p><%= //message %></p>
+<% //} %> -->

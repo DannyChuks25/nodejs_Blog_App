@@ -1,0 +1,58 @@
+<div class="">
+    <h1 class="">Search Results</h1>
+</div>
+
+<div>
+    <% data.forEach(search=> { %>
+        <div class="card">
+            <div class="img-ctn">
+                <img src="<%= search.coverPhoto %>" alt="">
+            </div>
+            <div class="tech-stack">
+                <h5>
+                    <%= search.techStack %>
+                </h5>
+            </div>
+            <div class="blog-title">
+                <a href="<%= routePost %>/viewPost/<%= search._id %>">
+                    <h3>
+                        <%= search.title %>
+                    </h3>
+                </a>
+                <i></i>
+            </div>
+            <div class="blog-desc">
+                <p>
+                    <%= search.desc %>
+                </p>
+            </div>
+            <div class="more">
+                <div class="profile-img">
+                    <img src="<%= search.profileImg %>" alt="">
+                </div>
+                <div class="name-Date">
+                    <div class="name">
+                        <h5>
+                            <%= search.authorName %>
+                        </h5>
+                    </div>
+                    <div>
+                        <div class="date">
+                            <span>
+                                <!-- <%= search.createdAt.toDateString() %> -->
+                                <%= search.createdAt ? search.createdAt.toDateString() : search.date %>
+                            </span>
+                        </div>
+                        <!-- <% //if (User.role=="author") { %>
+                            <div class="upd_del">
+                                <button>Update</button>
+                                <button>Delete</button>
+                            </div>
+                            <% //} %> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+</div>

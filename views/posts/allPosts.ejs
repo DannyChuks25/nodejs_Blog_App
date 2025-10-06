@@ -1,0 +1,48 @@
+<a href="/api/blog/dashboard">Back &larr;</a>
+<h2 style="text-align: center; color: brown;">
+    All Posts
+</h2>
+<div class="card-ctn">
+    <% posts.forEach(post => { %>
+                <div class="card">
+                    <div class="img-ctn">
+                        <img src="<%= post.coverPhoto %>" alt="">
+                    </div>
+                    <div class="tech-stack">
+                        <h5><%= post.techStack %></h5>
+                    </div>
+                    <div class="blog-title">
+                        <a href="<%= routePost %>/viewPost/<%= post._id %>">
+                            <h3><%= post.title %></h3>
+                        </a>
+                        <i></i>
+                    </div>
+                    <div class="blog-desc">
+                        <p><%= post.desc %></p>
+                    </div>
+                    <div class="more">
+                        <div class="profile-img">
+                            <img src="<%= post.profileImg %>" alt="">
+                        </div>
+                        <div class="name-Date">
+                            <div class="name"><h5><%= post.authorName %></h5></div>
+                            <div>
+                                <div class="date">
+                                    <span>
+                                    <!-- <%= post.createdAt.toDateString() %> -->
+                                    <%= post.createdAt ? post.createdAt.toDateString() : post.date %>
+                                    </span>
+                                </div>
+                                <!-- <% //if (User.role=="author") { %>
+                                <div class="upd_del">
+                                    <button>Update</button>
+                                    <button>Delete</button>
+                                </div>
+                                <% //} %> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+</div>
+            
