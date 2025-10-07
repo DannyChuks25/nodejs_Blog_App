@@ -10,9 +10,23 @@ const expressLayout = require("express-ejs-layouts");
 const setUser = require("./middleware/setUser");
 
 const app = express();
-mongoose.connect("mongodb://localhost:27017/blog_Platform")
-.then(()=>console.log("MongoDb connected succesfully!"))
-.catch((err)=>console.log("MongoDb connection failed", err));
+const connectDB = async () => {
+     try{
+        const conn = await mongoose.connect(process.env.MONGODB_URI);
+        // mongoose.set('strictQuery', false);
+        // const conn = await mongoose.connect(process.env.MONGODB_URI);
+        console.log(`Database Connected ${conn.connection.host}`)
+    }
+    catch(error){
+        console.log("MongoDB connection failed:", error);
+        process.exit(1);
+    }
+}
+connectDB();
+
+// mongoose.connect("mongodb://localhost:27017/blog_Platform")
+// .then(()=>console.log("MongoDb connected succesfully!"))
+// .catch((err)=>console.log("MongoDb connection failed", err));
 
 app.use(express.static("public"));
 app.use(express.json());
