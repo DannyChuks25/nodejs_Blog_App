@@ -224,6 +224,7 @@ ul li a:hover{
 
 #createPost input, #createPost textarea,
 #updatePost input, #updatePost textarea,
+#registerForm input, #contactForm input, #contactForm textarea,
 #loginForm input{
     outline: none;
     padding: 12px 10px;
