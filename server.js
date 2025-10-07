@@ -52,6 +52,10 @@ app.use("/api/blog", require("./routes/mainRoute"));
 app.use("/api/blog/posts", require("./routes/postRoutes"));
 app.use("/api/blog/dashboard", require("./routes/adminRoutes"));
 
+app.get("/", (req, res) => {
+    res.redirect("/api/blog");
+})
+
 app.locals.route = "/api/blog";
 app.locals.routePost = "/api/blog/posts";
 app.locals.adminRoutes = "/api/blog/dashboard";

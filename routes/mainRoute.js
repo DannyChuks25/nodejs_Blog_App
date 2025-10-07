@@ -3,12 +3,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const User = require("../models/users");
-const blogCards = require("../models/blogCards")
-const Post = require("../models/posts")
+const blogCards = require("../models/blogCards");
+const Post = require("../models/posts");
 const authMiddleware = require("../middleware/authMiddleware");
-const route = `${process.env.BASE_URL}/blog`
-const routePost = `${process.env.BASE_URL}/blog/posts`
-const adminRoutes = `${process.env.BASE_URL}/blog/dashboard`
+const route = `${process.env.BASE_URL}/blog`;
+const routePost = `${process.env.BASE_URL}/blog/posts`;
+const adminRoutes = `${process.env.BASE_URL}/blog/dashboard`;
 
 router.get("", async (req, res) => {
     let perPage = 6;
