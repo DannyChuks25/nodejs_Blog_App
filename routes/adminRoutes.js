@@ -5,7 +5,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 const upload = require("../utils/multer");
 const router = express.Router();
 
-const adminRoutes = "http://localhost:3000/api/blog/dashboard";
+const adminRoutes = `${process.env.BASE_URL}/blog/dashboard`
 
 router.get("/post/:id", async (req, res) => {
     const id = req.params.id;

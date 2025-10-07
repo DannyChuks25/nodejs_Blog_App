@@ -56,5 +56,4 @@ app.locals.route = "/api/blog";
 app.locals.routePost = "/api/blog/posts";
 app.locals.adminRoutes = "/api/blog/dashboard";
 
-
 app.listen(3000, ()=> console.log(`Server running on localhost:3000`));

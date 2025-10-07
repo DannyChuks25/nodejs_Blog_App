@@ -6,7 +6,7 @@ const cloudinary = require("../utils/cloudinary");
 const upload = require("../utils/multer");
 const router = express.Router();
 
-const routePost = "http://localhost:3000/api/blog/posts"
+const routePost = `${process.env.BASE_URL}/blog/posts`
 
 // ADMIN DASHBOARD
 router.get("", (req, res) => {
