@@ -13,8 +13,6 @@ const app = express();
 const connectDB = async () => {
      try{
         const conn = await mongoose.connect(process.env.MONGODB_URI);
-        // mongoose.set('strictQuery', false);
-        // const conn = await mongoose.connect(process.env.MONGODB_URI);
         console.log(`Database Connected ${conn.connection.host}`)
     }
     catch(error){
@@ -37,27 +35,29 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 
 app.use(session({
-    secret: 'keyboard cat',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI
+        // mongoUrl: "mongodb://localhost:27017"
     })
 }));
 app.use(setUser);
 app.use(expressLayout)
 app.set("layout", "./layouts/main");
 app.set("view engine", "ejs");
-app.use("/api/blog", require("./routes/mainRoute"));
-app.use("/api/blog/posts", require("./routes/postRoutes"));
-app.use("/api/blog/dashboard", require("./routes/adminRoutes"));
+
+app.use("/blog", require("./routes/mainRoute"));
+app.use("/blog/posts", require("./routes/postRoutes"));
+app.use("/blog/dashboard", require("./routes/adminRoutes"));
 
 app.get("/", (req, res) => {
-    res.redirect("/api/blog");
+    res.redirect("/blog");
 })
 
-app.locals.route = "/api/blog";
-app.locals.routePost = "/api/blog/posts";
-app.locals.adminRoutes = "/api/blog/dashboard";
+app.locals.route = "/blog";
+app.locals.routePost = "/blog/posts";
+app.locals.adminRoutes = "/blog/dashboard";
 
 app.listen(3000, ()=> console.log(`Server running on localhost:3000`));

@@ -5,6 +5,8 @@ const postSchema = new mongoose.Schema({
     title: {type: String, required: true},
     desc: {type: String, required: true},
     authorName: {type: String, required: true},
+    AuthorName: {type: String, required: true},
+    // authorId: { type: String, required: true },
     cloudinary_id: { type: String }
 }, {timestamps:true})
 

@@ -6,7 +6,7 @@
 
         <% if (user) { %>
             <div class="auth">
-                <form action="/logout" method="POST" style="display:inline;">
+                <form action="<%= route %>/logout" method="POST" style="display:inline;">
                     <button type="submit">Logout</button>
                 </form>
             </div>

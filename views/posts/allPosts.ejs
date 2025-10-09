@@ -1,4 +1,7 @@
-<a href="/api/blog/dashboard">Back &larr;</a>
+<% if (user) { %>
+    <a href="/blog/dashboard">Back &larr;</a>
+<% } %>
+
 <h2 style="text-align: center; color: brown;">
     All Posts
 </h2>
@@ -25,7 +28,7 @@
                             <img src="<%= post.profileImg %>" alt="">
                         </div>
                         <div class="name-Date">
-                            <div class="name"><h5><%= post.authorName %></h5></div>
+                            <div class="name"><h5><%= post.AuthorName %></h5></div>
                             <div>
                                 <div class="date">
                                     <span>
@@ -44,5 +47,9 @@
                     </div>
                 </div>
             <% }) %>
+
+            <% if (nextPage !== null) { %>
+            <a href="<%= routePost %>/allPosts/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+        <% } %>
 </div>
             

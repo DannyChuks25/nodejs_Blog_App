@@ -6,9 +6,13 @@ const User = require("../models/users");
 const blogCards = require("../models/blogCards");
 const Post = require("../models/posts");
 const authMiddleware = require("../middleware/authMiddleware");
-const route = `${process.env.BASE_URL}/blog`;
-const routePost = `${process.env.BASE_URL}/blog/posts`;
-const adminRoutes = `${process.env.BASE_URL}/blog/dashboard`;
+
+// const route = `${process.env.BASE_URL}/blog`;
+const route = `/blog`;
+// const routePost = `${process.env.BASE_URL}/blog/posts`;
+const routePost = `/blog/posts`;
+// const adminRoutes = `${process.env.BASE_URL}/blog/dashboard`;
+const adminRoutes = `/blog/dashboard`;
 
 router.get("", async (req, res) => {
     let perPage = 6;
@@ -41,8 +45,8 @@ router.post("/register", async (req, res) => {
             title: "Registration Error",
             heading: "Error",
             message: "User already exists",
-            redirectUrl: "/api/blog/register",
-            loginUrl: "/api/blog/login",
+            redirectUrl: "/blog/register",
+            loginUrl: "/blog/login",
             route
         });
 
@@ -53,6 +57,8 @@ router.post("/register", async (req, res) => {
         email: email,
         password: hashedPassword,
     })
+    req.session.userId = newUser._id;
+
     await newUser.save();
     const token = generateToken({ _id: newUser._id, name: newUser.name });
     // res.status(201).json({ message: "User Account successfully created" })
@@ -60,8 +66,8 @@ router.post("/register", async (req, res) => {
         title: "Registration Success",
         heading: "Success",
         message: "User Account successfully created",
-        redirectUrl: "/api/blog/register",
-        loginUrl: "/api/blog/login",
+        redirectUrl: "/blog/register",
+        loginUrl: "/blog/login",
     })
 })
 
@@ -78,7 +84,7 @@ router.post("/login", async (req, res) => {
     const token = generateToken({ _id: user._id, name: user.name });
     res.cookie('token', token, { httpOnly: true });
     req.session.userId = user._id;
-    res.redirect("/api/blog/dashboard");
+    res.redirect("/blog/dashboard");
     // res.json({ message: "User logged in successfully", token });
 })
 
@@ -135,6 +141,19 @@ router.post("/search", async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+})
+
+router.post("/logout", (req, res) => {
+    req.session.destroy(err => {
+        if(err){
+            return res.status(500).json({message: "Logout Failed!"})
+        }
+        res.clearCookie("connect-sid", { 
+            path: "/" 
+        })
+        // res.json({message: "Logout successfull"})
+        res.redirect("/blog");
+    }) 
 })
 
 module.exports = router;

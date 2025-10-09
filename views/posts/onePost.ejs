@@ -17,7 +17,7 @@
         <div class="name-Date">
                 <div class="name">
                     <h5> By: 
-                        <%= post.authorName %>
+                        <%= post.AuthorName %>
                     </h5>
                 </div>
                 <div class="date"><span>
@@ -32,6 +32,8 @@
         </div>
 
         <br>
-        <a href="/api/blog/dashboard">Back &lArr;</a>
+        <% if (user) { %>
+            <a href="/blog/dashboard">Back &lArr;</a>
+        <% } %>
     </div>
 </div>
