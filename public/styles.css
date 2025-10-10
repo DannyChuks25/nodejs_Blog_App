@@ -263,6 +263,50 @@ form button:hover{
 span.apos{
     font-size: 20px;
 }
+span i.fa-bars{
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: -7px;
+    padding: 3px;
+    color: brown;
+}
+.show-border{
+    border: 1px solid brown;
+    border-radius: 4px;
+}
+
+@media screen and (min-width: 768px){
+    span i.fa-bars{
+        display: none;
+    }
+}
+
+.mobile-nav{
+    position: absolute;
+    width: 100%;
+    top: 70px;
+    left: 0;
+    background-color: beige;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    transition: all 0.3s ease;
+    transform: translateY(-40px);
+    opacity: 0;
+    pointer-events: none;
+}
+.mobile-nav.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav ul{
+    display: block;
+}
+.mobile-nav ul li{
+    margin: 10px 0;
+}
+
 .about p{line-height: 1.2rem;}
 .message-box{
     display: flex;
