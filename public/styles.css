@@ -110,15 +110,17 @@ ul li a:hover{
     padding: 20px;
     /* background-color: yellow; */
     display: grid;
-    gap: 1rem;
+    place-items: center;
+    gap: 3rem;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     /* grid-template-rows: auto; */
 }
+
 .card{
     background-color: #fff;
     box-shadow: 2px 2px 17px rgba(0,0,0,0.3);
     padding: 14px;
-    /* width: 300px; */
+    width: 300px;
     text-align: left;
 }
 .blog-title{
@@ -127,11 +129,12 @@ ul li a:hover{
     align-items: center;
 }
 .img-ctn img{
+    width: 100%;
     height: 180px;
     object-fit: cover;
 }
-.img-ctn, .img-ctn img{
-    width: 100%;
+.img-ctn{
+    
 }
 .blog-desc p{
     font-size: 0.9rem;
